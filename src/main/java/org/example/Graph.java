@@ -13,6 +13,11 @@ public class Graph {
     public void addEdge(int from, int to) {
         adjList.get(from).add(to);
     }
+    public void printGraph() {
+        for (Integer key: adjList.keySet()) {
+            System.out.println("Vertex "+key+"neighbors: "+adjList.get(key));
+        }
+    }
     public void bfs(int start) {
         Set<Integer> visited=new HashSet<>();
         Queue<Integer> queue=new LinkedList<>();
@@ -24,7 +29,7 @@ public class Graph {
             int current=queue.poll();
             System.out.print(current+" ");
 
-            for (int neighbor:adjList.get(current)) {
+            for (int neighbor:adjList.getOrDefault(current, new ArrayList<>())) {
                 if (!visited.contains(neighbor)) {
                     visited.add(neighbor);
                     queue.add(neighbor);
@@ -40,7 +45,7 @@ public class Graph {
         visited.add(current);
         System.out.print(current+" ");
 
-        for (int neighbor:adjList.get(current)) {
+        for (int neighbor:adjList.getOrDefault(current, new ArrayList<>())) {
             if (!visited.contains(neighbor)) {
                 dfsHelper(neighbor, visited);
             }
