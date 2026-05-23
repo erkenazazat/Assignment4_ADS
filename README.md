@@ -45,6 +45,8 @@ I performed experiments on three graph sizes (10, 30, and 100 vertices) to measu
 * **How does structure affect order?** The adjacency list order determines which neighbor is visited first.BFS visits breadth-wise, while DFS dives depth-wise.
 * **When is BFS preferred?** When you need to find the shortest path from the starting vertex.
 * **What are the limitations of DFS?** DFS does not guarantee the shortest path and can be inefficient in very deep graphs.
+* **Why are there "Unreachable" nodes in Dijkstra?** Since the graph is directed and edges are generated randomly, some nodes either have no incoming edges or the starting node (Vertex 0) has no outgoing paths (as seen in the 10 and 30 vertex experiments).
+* **How does the non-priority-queue Dijkstra perform?** Without a Priority Queue, the algorithm uses a simple loop to scan all vertices to find the minimum distance node at each step. This results in a time complexity of $O(V^2)$, which explains why its execution time jumps noticeably up to ~1.96ms on 100 vertices compared to BFS/DFS.
 
 ## Screenshots
 * **Graph Structure Output:**  ![small_graph.png](docs/screenshots/small_graph.png)
