@@ -26,14 +26,17 @@ This project focuses on implementing a graph data structure using an **Adjacency
 ## Experimental Results
 I performed experiments on three graph sizes (10, 30, and 100 vertices) to measure performance in nanoseconds.
 
-| Graph Size | Algorithm | Execution Time (ns) |
-| :--- | :--- | :--- |
-| **Small (10 Vertices)** | BFS | 275,000 |
-| | DFS | 81,292 |
-| **Medium (30 Vertices)** | BFS | 179,834 |
-| | DFS | 154,042 |
-| **Large (100 Vertices)** | BFS | 824,708 |
-| | DFS | 477,083 |
+| Graph Size | Algorithm | Execution Time (ns) | Key Observations / Output Summary |
+| :--- | :--- | :--- | :--- |
+| **Small (10 Vertices)** | BFS | 552,250 | Vertex 0 was isolated (0 neighbors). |
+| | DFS | 51,625 | Traversal stopped immediately at Vertex 0. |
+| | Dijkstra | 173,625 | All other vertices marked as **Unreachable**. |
+| **Medium (30 Vertices)**| BFS | 15,791 | Vertex 0 was isolated again due to |
+| | DFS | 8,875 | random generation constraints. All other |
+| | Dijkstra | 206,875 | nodes returned as **Unreachable**. |
+| **Large (100 Vertices)**| BFS | 540,625 | Successfully traversed 84 connected vertices. |
+| | DFS | 461,500 | Explored deep paths along the connected component. |
+| | Dijkstra | 1,961,834 | Found exact shortest paths (e.g., V1=7, V46=3). |
 
 ### Questions
 * **How does graph size affect performance?** As the number of vertices increases, the execution time grows because the algorithms must process more nodes and edges.
@@ -46,6 +49,7 @@ I performed experiments on three graph sizes (10, 30, and 100 vertices) to measu
 ## Screenshots
 * **Graph Structure Output:**  ![small_graph.png](docs/screenshots/small_graph.png)
 * **Performance Results:** ![performance.png](docs/screenshots/performance.png)
+* **Dijkstra results:** ![dijkstra.png](docs/screenshots/dijkstra.png)
 
 ## F. Reflection
 During this implementation, I learned how graph representation impacts the efficiency of traversal algorithms. I observed the practical differences between BFS and DFS in terms of execution flow and memory usage.

@@ -17,6 +17,12 @@ public class Experiment {
 
         System.out.println("BFS execution time: "+durationBfs+"ns");
         System.out.println("DFS execution time: "+durationDfs+"ns");
+
+        long startDijkstra=System.nanoTime();
+        g.dijkstra(startNode);
+        long endDijksta=System.nanoTime();
+        long durationDijkstra=endDijksta-startDijkstra;
+        System.out.println("Dijkstra execution time: "+durationDijkstra+"ns\n");
     }
     public void MultipleTests() {
         int[] sizes={10,30,100};
@@ -33,7 +39,8 @@ public class Experiment {
                 int from=random.nextInt(size);
                 int to=random.nextInt(size);
                 if (from!=to) {
-                    graph.addEdge(from,to);
+                    int weight=random.nextInt(10)+1;
+                    graph.addEdge(from,to, weight);
                 }
             }
             if (size==10) {
